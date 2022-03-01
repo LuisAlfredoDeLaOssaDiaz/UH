@@ -1,0 +1,9 @@
+yarn add express
+yarn add -g express-handlebars
+yarn add -g express-session
+yarn add -g method-override
+yarn add -g mongoose
+yarn add -g passport
+yarn add -g passport-local
+yarn add -g bcrypts
+yarn add -g connect-flash

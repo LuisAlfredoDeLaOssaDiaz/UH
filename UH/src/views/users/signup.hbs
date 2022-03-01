@@ -1,0 +1,95 @@
+{{#each errors}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24px"
+      viewBox="0 0 24 24"
+      width="24px"
+      fill="#000000"
+    >
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path>
+    </svg>
+    {{text}}
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+{{/each}}
+
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-header">
+      <h3>Register</h3>
+    </div>
+
+    <div class="card-body">
+      <form action="/users/signup" method="POST">
+        <div class="form-groub">
+          <strong> Cédula: </strong>
+          <input type="number" name="cc" class="form-control" placeholder="Cédula" autofocus />
+        </div>
+        <br />
+        <div class="form-group">
+            <strong> EPS: </strong>
+            <select name="eps">
+                <option name="eps" value="" defaultChecked>Select your EPS.</option>
+                <option name="eps" value="cajacopi"> Cajacopi </option>
+                <option name="eps" value="coosalud"> Coosalud </option>
+                <option name="eps" value="saludtotal"> Salud Total </option>
+                <option name="eps" value="cafesalud"> Cafesalud </option>
+            </select>
+        </div>
+        <br />
+        <div class="form-groub">
+          <strong> Full Name: </strong>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Full Name"
+            autofocus
+          />
+        </div>
+        <div class="form-groub">
+          <strong> Email: </strong>
+          <input
+            type="text"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+          />
+        </div>
+        <div class="form-group">
+          <strong> Password: </strong>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <strong> Repeat Password: </strong>
+          <input
+            type="password"
+            name="confirmPassword"
+            class="form-control"
+            placeholder="Confirm Password"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>
