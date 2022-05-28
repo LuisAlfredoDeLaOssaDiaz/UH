@@ -4,6 +4,7 @@ const {Schema} = mongoose;
 const NoteSchema = new Schema ({
     eps: {type: String, required: true},
     description: {type: String, required: true},
+    nit: {type: Number, required: true},
     date: {type: Date, default: Date.now}
 });
 

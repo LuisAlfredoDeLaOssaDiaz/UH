@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt');
 const SignupSchema = new Schema ({
     cc: {type: Number, required: true, unique: true},
     name: {type: String, required: true},
+    numberPhone: {type: Number, required: true}, 
+    address: {type: String, required: true}, 
+    blood: {type: String, required: true},
     eps: {type: String, required: true},
     email: {type: String, required: true,},
     password: {type: String, required: true},

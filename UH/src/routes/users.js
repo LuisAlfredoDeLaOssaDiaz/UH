@@ -11,7 +11,7 @@ router.get('/users/register', (req, res) => {
 });
 
 router.post('/users/signup', async (req, res) => {
-    const { cc, name, eps, email, password, confirmPassword, status } = req.body;
+    const { cc, name, numberPhone, address, blood, eps, email, password, confirmPassword, status } = req.body;
 
     const errors = [];
     if (!cc) {
@@ -22,8 +22,16 @@ router.post('/users/signup', async (req, res) => {
         errors.push({ text: 'Please Write your Full Name.' });
         //req.flash('error_msg', 'Please Write your Full Name.');
     }
-    if (!eps) {
-        errors.push({ text: 'Please Write your E.P.S.' });
+    if (!numberPhone) {
+        errors.push({ text: 'Please Write a Number Phone.' });
+        //req.flash('error_msg', 'Please Write your Full Name.');
+    }
+    if (!address) {
+        errors.push({ text: 'Please Write your residencial address' });
+        //req.flash('error_msg', 'Please Write your Full Name.');
+    }
+    if (!blood) {
+        errors.push({ text: 'Please select your blood type.' });
         //req.flash('error_msg', 'Please Write your Full Name.');
     }
     if (!email) {
@@ -51,6 +59,9 @@ router.post('/users/signup', async (req, res) => {
             errors,
             cc,
             name,
+            numberPhone, 
+            address, 
+            blood,
             eps,
             email,
             password,
@@ -66,7 +77,7 @@ router.post('/users/signup', async (req, res) => {
             //req.flash('error_msg', 'The Email is already in use.');
             res.render('users/signup', { errors });
         } else {
-            const newUser = new Signup({ cc, name, eps, email, password, status: 'enable' });
+            const newUser = new Signup({ cc, name, numberPhone, address, blood, eps, email, password, status: 'enable' });
             // console.log(newUser);
             newUser.password = await newUser.encryptPassword(password); // Save the password encrypted
             await newUser.save();

@@ -1,0 +1,50 @@
+<div class="row">
+    <table class="table table-hover" style="background-color: rgb(255, 255, 255); border-radius: 10px">
+            <form action="/searchMedicaments" method="POST">
+                <input type="hidden" id="op" name="op" value="I">
+                <div class="input-group mb-3">
+                    <input placeholder="Search" type="number" class="form-control" name="search" aria-label="Sizing example input" aria-describedby="inputGroup_idt">
+                    </div>
+                <br >
+                    
+                <input class="btn btn-primary" type="submit" name="form" value="Submit" />
+                <a href="#" class="btn btn-warning btn-xs">Pet inventories by Status</a>
+            </form>
+        <tbody>
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID PATIENT</th>
+            <th scope="col">NAME</th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">CONTENT RIVER</th>
+            <th scope="col">CONTENT CONS</th>
+            <th scope="col">INGEST</th>
+            <th scope="col">WEIGHT (MG)</th>
+        </tr>
+        </thead>
+
+        
+    {{#each drugs}}
+            <tr>
+                <th style="align-content: right;" scope="col">{{id_patient}}</th>
+                <th scope="col">{{name}}</th>
+                <th scope="col">{{description_function}}</th>
+                <th scope="col">{{content.river}}</th>
+                <th scope="col">{{content.cons}}</th>
+                <th scope="col">{{ingest}}</th>
+                <th scope="col">{{weight_mg}}</th>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            
+                        </label>
+                    </div>
+                </td>
+            </tr>
+    {{/each}}
+        
+        </tbody>
+    </table>
+
+</div>

@@ -54,6 +54,9 @@ server.use ((req,res,next) => {
 server.use(require('./routes/index'));
 server.use(require('./routes/notes'));
 server.use(require('./routes/users'));
+server.use(require('./routes/appointment'));
+server.use(require('./routes/medicaments'));
+
 
 // Static Files
 
