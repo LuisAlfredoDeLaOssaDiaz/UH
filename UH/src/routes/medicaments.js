@@ -30,13 +30,24 @@ const {isAuthenticated} = require('../helpers/auth')
 //     }
 // });
 
-router.post('/searchMedicaments', (req, res) => {
+router.post('/searchMedicaments', isAuthenticated, (req, res) => {
     const { search } = req.body;
     console.log(req)
-    res.redirect('/medicaments/'+search)
+    res.redirect('/medicaments/name/'+search)
 })
 
-router.get('/medicaments/:nit', async (req, res) => {
+router.get('/medicaments/name/:name', isAuthenticated, async (req, res) => {
+    // res.send('DRUGS from database.');
+
+    await Drug.find({name: req.params.name}).then(drugs => {
+        // console.log(drugs)
+        res.render('notes/all-medicaments', { 
+            drugs: drugs.map(Drug => Drug.toJSON())
+        })
+    });
+});
+
+router.get('/medicaments/:nit', isAuthenticated, async (req, res) => {
     // res.send('DRUGS from database.');
 
     await Drug.find({nit: req.params.nit}).then(drugs => {
@@ -47,10 +58,10 @@ router.get('/medicaments/:nit', async (req, res) => {
     });
 });
 
-router.get('/searchMedicaments/:nit/:name', (req, res) => {
-    console.log(req.params.nit)
-    console.log(req.params.name)
-})
+// router.get('/searchMedicaments/:nit/:name', (req, res) => {
+//     console.log(req.params.nit)
+//     console.log(req.params.name)
+// })
 // def storess(): 
 //     id = request.form['search']
 //     if id:

@@ -3,12 +3,12 @@
             <form action="/searchMedicaments" method="POST">
                 <input type="hidden" id="op" name="op" value="I">
                 <div class="input-group mb-3">
-                    <input placeholder="Search" type="number" class="form-control" name="search" aria-label="Sizing example input" aria-describedby="inputGroup_idt">
+                    <input placeholder="Search" type="text" class="form-control" name="search" aria-label="Sizing example input" aria-describedby="inputGroup_idt">
                     </div>
                 <br >
                     
                 <input class="btn btn-primary" type="submit" name="form" value="Submit" />
-                <a href="#" class="btn btn-warning btn-xs">Pet inventories by Status</a>
+                <a href="#" class="btn btn-warning btn-xs">MEDICAMENTS</a>
             </form>
         <tbody>
         <thead class="thead-dark">
@@ -43,8 +43,8 @@
                 </td>
             </tr>
     {{/each}}
-        
         </tbody>
     </table>
+        <strong><a href="#" class="btn btn-warning btn-xs">Add Products</a></strong>
 
 </div>
