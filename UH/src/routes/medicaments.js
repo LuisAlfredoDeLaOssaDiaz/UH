@@ -32,7 +32,7 @@ const {isAuthenticated} = require('../helpers/auth')
 
 router.post('/searchMedicaments', isAuthenticated, (req, res) => {
     const { search } = req.body;
-    console.log(req)
+    // console.log(req)
     res.redirect('/medicaments/name/'+search)
 })
 

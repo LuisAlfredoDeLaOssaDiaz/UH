@@ -30,7 +30,7 @@ router.post('/notes/new-note', isAuthenticated, async (req, res) => {
     } else {
         const newNote = new Note({eps, description, nit});
         newNote.user = req.user.id
-        //console.log(newNote);
+        console.log(newNote.user);
         await newNote.save();
         req.flash('success_msg', 'Note Added Successfull.');
         res.redirect('/notes');

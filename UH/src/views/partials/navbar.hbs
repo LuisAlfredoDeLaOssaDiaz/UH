@@ -15,8 +15,10 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
-            {{#if user}}
+
+            {{#if user }}
             <form class="d-flex">
+            <a style="margin-top: 10px;" class="nav-link dropdown-item" href="/makeanappointment" >Make an Appointment</a>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,7 +27,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/notes">All Far EPS</a></li>
                         <li><a class="dropdown-item" href="/notes/add">Add EPS</a></li>
-                        <li><a class="dropdown-item" href="/makeanappointment">Make an Appointment</a></li>
+                        <li><a class="dropdown-item" href="/view/appointment">View Appointment</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
