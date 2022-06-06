@@ -1,0 +1,33 @@
+<div class="row">
+    {{#each appointments}}
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Id Appointment</th>
+                        <th scope="col">Reason for Appointment</th>
+                        <th scope="col">Date Appointment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <div>
+                                <td><h6>{{_id}}</h6></td>
+                            </div>
+                            <div>
+                                <td><h6>{{description}}</h6></td>
+                            </div>
+                            <div>
+                                <td><h6>{{date}}</h6></td>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+    {{/each}}
+</div>

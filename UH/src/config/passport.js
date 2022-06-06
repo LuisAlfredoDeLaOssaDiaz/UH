@@ -3,6 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const Signup = require('../models/Signup')
 
+// se usa para definir si un usuario esta registrado en la base de datos o no
 passport.use(new LocalStrategy({
     usernameField: 'cc',
     passwordField: 'password'
@@ -21,10 +22,13 @@ passport.use(new LocalStrategy({
     }
 }))
 
+// aqui serializa el usuario
+
 passport.serializeUser((ccUser, done) => {
     done(null, ccUser.id);
 });
 
+// aqui desloguea el usuario logueado
 passport.deserializeUser((id, done ) => {
     Signup.findById(id, (err, ccUser) => {
         done(err,ccUser);

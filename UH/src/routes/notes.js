@@ -2,13 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 const Note = require('../models/Notes'); // work to get post push delete
-const {isAuthenticated} = require('../helpers/auth')
+const {isAuthenticated} = require('../helpers/auth') // se importa la validacion para saber si esta autenticado el usuario
 
 router.get('/notes/add', isAuthenticated, (req, res) => {
     res.render('notes/new-note');
 });
 
+//ruta para guardar y validar dstos de nuevas eps
 router.post('/notes/new-note', isAuthenticated, async (req, res) => {
+    // valida los errores que se presenten al guardar datos
     const { eps, description, nit } = req.body;
     const errors = [];
     if (!eps) {
@@ -27,16 +29,19 @@ router.post('/notes/new-note', isAuthenticated, async (req, res) => {
             description,
             nit
         }); 
+        // se guardan los datos en el esquema de eps
     } else {
         const newNote = new Note({eps, description, nit});
         newNote.user = req.user.id
-        console.log(newNote.user);
+        // console.log(newNote.user);
         await newNote.save();
         req.flash('success_msg', 'Note Added Successfull.');
         res.redirect('/notes');
     }
 });
 
+
+// ruta para mostrar farm eps
 router.get('/notes', isAuthenticated, async (req, res) => {
     //res.send('NOTES from database.');
     // console.log(req.user.eps);
@@ -47,6 +52,8 @@ router.get('/notes', isAuthenticated, async (req, res) => {
     })
 });
 
+
+// ruta get para editar eps
 router.get('/notes/edit/:id', isAuthenticated, (req,res) => {
 
     Note.findById(req.params.id).then (note => {
@@ -60,6 +67,7 @@ router.get('/notes/edit/:id', isAuthenticated, (req,res) => {
     });
 });
 
+//ruta para editar el contenido de las farmacias eps
 router.put('/notes/edit-note/:id', isAuthenticated, async (req,res) => {
     
     const { title, description } = req.body;
@@ -68,6 +76,7 @@ router.put('/notes/edit-note/:id', isAuthenticated, async (req,res) => {
     res.redirect('/notes');
 })
 
+//ruta para eliminar una farmacia
 router.delete('/notes/delete/:id', isAuthenticated, async (req, res) => {
     //console.log(req.params.id);
     //res.send('ok');

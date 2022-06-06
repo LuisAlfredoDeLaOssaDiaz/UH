@@ -30,12 +30,16 @@ const {isAuthenticated} = require('../helpers/auth')
 //     }
 // });
 
-router.post('/searchMedicaments', isAuthenticated, (req, res) => {
+
+
+router.post('/searchMedicaments', isAuthenticated, (req, res) => { 
+    // ruta busca los medicamentos
     const { search } = req.body;
     // console.log(req)
     res.redirect('/medicaments/name/'+search)
 })
 
+//busca los medicamentos dependiendo el nombre intresado
 router.get('/medicaments/name/:name', isAuthenticated, async (req, res) => {
     // res.send('DRUGS from database.');
 

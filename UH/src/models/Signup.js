@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); //plugging para encriptar contenido en este caso la contraseña
 
 const SignupSchema = new Schema ({
     cc: {type: Number, required: true, unique: true},
@@ -11,10 +11,11 @@ const SignupSchema = new Schema ({
     eps: {type: String, required: true},
     email: {type: String, required: true,},
     password: {type: String, required: true},
-    // confirmPassword: {type: String, required: true},
+    // type: {type: Number, required: true},
     status: {type: String, required: true},
     date: {type: Date, default: Date.now}
 });
+
 /* ENCRYPT THE PASSWORD */
 SignupSchema.methods.encryptPassword = async (password) => {
     const salt = await bcrypt.genSalt(10);

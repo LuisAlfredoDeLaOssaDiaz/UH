@@ -10,6 +10,7 @@ router.get('/users/register', (req, res) => {
     res.render('users/signup');
 });
 
+// ruta para enviar datos al modelo de datos user
 router.post('/users/signup', async (req, res) => {
     const { cc, name, numberPhone, address, blood, eps, email, password, confirmPassword, status } = req.body;
 
@@ -93,6 +94,7 @@ router.get('/users/signin', (req, res) => {
     res.render('users/signin');
 });
 
+// ruta para iniciar seccion metodo post
 router.post('/users/signin', passport.authenticate('local', {
 
     successRedirect: '/notes',
@@ -100,6 +102,7 @@ router.post('/users/signin', passport.authenticate('local', {
     failureFlash: true
 }));
 
+// ruta para desloguear el usuario
 router.get('/users/logout', isAuthenticated, (req, res) => {
     
     req.logout();
